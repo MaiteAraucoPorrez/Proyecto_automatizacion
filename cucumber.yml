@@ -2,16 +2,13 @@
 #   cucumber features/1login.feature
 #   cucumber features --format html --out reports/reporte.html
 #
-#   -p smoke       -> solo @smoke (flujo critico)         -> reports/smoke_report.html
-#   -p regression  -> solo @regression                    -> reports/regression_report.html
-#   -p all         -> todo menos @bug                     -> reports/report.html
+#   (sin perfil)   -> todos los escenarios menos el bug conocido (@bug)
+#   -p smoke       -> Smoke Test completo + reporte en reports/smoke_report.html
 #   -p bug         -> solo el bug conocido (falla a proposito) -> reports/bug_report.html
-#   -p headless    -> todo sin abrir ventana de Chrome
-#   -p evidence    -> smoke + captura despues de cada paso en reports/evidence
+#   -p headless    -> Smoke Test sin abrir ventana de Chrome
+#   -p evidence    -> Smoke Test con captura despues de cada paso en reports/evidence
 default: --tags 'not @bug'
-smoke: --tags '@smoke' --format pretty --format html --out reports/smoke_report.html --publish-quiet
-regression: --tags '@regression' --format pretty --format html --out reports/regression_report.html --publish-quiet
-all: --tags 'not @bug' --format pretty --format html --out reports/report.html --publish-quiet
+smoke: --tags 'not @bug' --format pretty --format html --out reports/smoke_report.html --publish-quiet
 bug: --tags '@bug' --format pretty --format html --out reports/bug_report.html --publish-quiet
-headless: HEADLESS=true --tags 'not @bug' --format pretty --format html --out reports/report.html --publish-quiet
-evidence: EVIDENCE=true --tags '@smoke' --format pretty --format html --out reports/evidence_report.html --publish-quiet
+headless: HEADLESS=true --tags 'not @bug' --format pretty --format html --out reports/smoke_report.html --publish-quiet
+evidence: EVIDENCE=true --tags 'not @bug' --format pretty --format html --out reports/evidence_report.html --publish-quiet

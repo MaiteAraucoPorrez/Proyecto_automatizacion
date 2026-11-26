@@ -19,9 +19,8 @@ Framework de pruebas automatizadas con enfoque **BDD** para ejecutar un **Smoke 
 [SauceDemo](https://www.saucedemo.com/), una tienda en línea de ejemplo. Los escenarios se escriben en
 Gherkin y se automatizan con Cucumber, Capybara y Selenium (Chrome), usando el patrón Page Object.
 
-Las pruebas se clasifican con etiquetas:
-- `@smoke`: flujo crítico que indica si el build está vivo.
-- `@regression`: el resto de las validaciones.
+Todos los escenarios forman el **Smoke Test**: cubren el flujo crítico de compra del sitio. Cada feature lleva una
+etiqueta de área (`@login`, `@carrito`, `@checkout`, `@logout`, `@catalogo`) y el defecto conocido va con `@bug`.
 
 ## Estado del proyecto
 En desarrollo (sprint del 24 de noviembre al 2 de diciembre). Los features se agregan de forma incremental.
@@ -32,10 +31,10 @@ En desarrollo (sprint del 24 de noviembre al 2 de diciembre). Los features se ag
 
 ## Funcionalidades automatizadas
 **Login** (`features/1login.feature`)
-- Login exitoso con usuario estándar (`@smoke`).
-- Login con usuario bloqueado (`@smoke`).
-- Credenciales inválidas, con `Scenario Outline` de 4 ejemplos (`@regression`).
-- Acceso directo a la página de productos sin iniciar sesión (`@regression`).
+- Login exitoso con usuario estándar.
+- Login con usuario bloqueado.
+- Credenciales inválidas, con `Scenario Outline` de 4 ejemplos .
+- Acceso directo a la página de productos sin iniciar sesión .
 
 ## Acceso al proyecto
 1. Clonar el repositorio.
@@ -44,14 +43,14 @@ En desarrollo (sprint del 24 de noviembre al 2 de diciembre). Los features se ag
 
 | Comando | Qué hace |
 |---|---|
-| `bundle exec cucumber` | Todo lo disponible (excluye `@bug`) |
+| `bundle exec cucumber` | Todo el Smoke Test (excluye `@bug`) |
 | `bundle exec cucumber features/1login.feature` | Un solo feature |
-| `bundle exec cucumber -p smoke` | Solo el smoke test (`@smoke`) |
-| `bundle exec cucumber -p regression` | Solo regresión (`@regression`) |
+| `bundle exec cucumber -p smoke` | Smoke Test completo con reporte HTML |
+| `bundle exec cucumber --tags @login` | Solo un área (por etiqueta) |
 | `bundle exec cucumber -p headless` | Sin abrir la ventana de Chrome |
 
 4. Revisar los resultados en la consola o en el reporte HTML.
-   Los perfiles `smoke`, `regression` y `all` generan el reporte en `reports/`
+   El perfil `smoke` genera el reporte en `reports/`
    (por ejemplo, `reports/smoke_report.html`). También se puede generar con:
    `bundle exec cucumber features --format html --out reports/reporte.html`
 
