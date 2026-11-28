@@ -1,4 +1,4 @@
-@login
+@login @maximize
 Feature: SauceDemo Login
   In order to buy products on SauceDemo
   As a customer

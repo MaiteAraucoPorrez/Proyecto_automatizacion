@@ -46,10 +46,11 @@ En desarrollo (sprint del 24 de noviembre al 2 de diciembre). Los features se ag
 | `bundle exec cucumber` | Todo el Smoke Test (excluye `@bug`) |
 | `bundle exec cucumber features/1login.feature` | Un solo feature |
 | `bundle exec cucumber -p smoke` | Smoke Test completo con reporte HTML |
-| `bundle exec cucumber --tags @login` | Solo un área (por etiqueta) |
+| `bundle exec cucumber -t @login` | Solo un área (por etiqueta) |
 | `bundle exec cucumber -p headless` | Sin abrir la ventana de Chrome |
 
-4. Revisar los resultados en la consola o en el reporte HTML.
+4. Revisar los resultados en la consola o en el reporte HTML. Cada escenario guarda una captura de pantalla en
+   `reports/screenshots` (nombre, estado y hora) y la adjunta al reporte.
    El perfil `smoke` genera el reporte en `reports/`
    (por ejemplo, `reports/smoke_report.html`). También se puede generar con:
    `bundle exec cucumber features --format html --out reports/reporte.html`

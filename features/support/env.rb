@@ -37,7 +37,7 @@ end
 Capybara::Screenshot.register_driver(:chrome_testing) do |driver, path|
   driver.browser.save_screenshot(path)
 end
-Capybara::Screenshot.autosave_on_failure = false  # las capturas se guardan en hooks.rb
+Capybara::Screenshot.autosave_on_failure = false  # las capturas de cada escenario se guardan en hooks.rb
 Capybara::Screenshot.append_timestamp = true
 Capybara.save_path = 'reports/screenshots'
 
